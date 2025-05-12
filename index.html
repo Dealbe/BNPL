@@ -1,0 +1,4091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayLate App Figma-style Mockup</title>
+  <style>
+    :root {
+      --primary: #1E3A8A;
+      --secondary: #059669;
+      --accent: #F59E0B;
+      --background: #F9FAFB;
+      --text: #1E293B;
+      --light-gray: #E5E7EB;
+      --medium-gray: #9CA3AF;
+      --dark-gray: #4B5563;
+      --white: #FFFFFF;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #F0F2F5;
+      color: var(--text);
+      padding: 20px;
+    }
+
+    .figma-header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1E1E1E;
+      color: white;
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 20px;
+    }
+
+    .figma-header h1 {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    .figma-logo {
+      width: 24px;
+      height: 24px;
+      background-color: #FF3E1D;
+      border-radius: 5px;
+    }
+
+    .screens-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .screens-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .screen {
+      background-color: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .screen:hover {
+      transform: translateY(-5px);
+    }
+
+    .screen-header {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 15px;
+      font-size: 14px;
+      text-align: center;
+      position: relative;
+    }
+
+    .screen-header .user-type {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background-color: var(--accent);
+      color: white;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    .screen-content {
+      padding: 20px;
+      font-size: 12px;
+      position: relative;
+      min-height: 500px;
+    }
+
+    .phone-frame {
+      border: 8px solid #333;
+      border-radius: 30px;
+      height: 580px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .status-bar {
+      height: 20px;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .notch {
+      width: 60px;
+      height: 15px;
+      background-color: #333;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .screen-body {
+      height: calc(100% - 20px);
+      background-color: var(--background);
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    /* UI Components */
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--light-gray);
+      margin-bottom: 15px;
+    }
+
+    .logo {
+      font-weight: bold;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      background-color: var(--primary);
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    .balance-card {
+      background: linear-gradient(45deg, var(--primary), #2563EB);
+      color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .balance-title {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+
+    .balance-amount {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .balance-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .action-button {
+      background-color: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .action-icon {
+      width: 30px;
+      height: 30px;
+      background-color: var(--background);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin: 15px 0 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .see-all {
+      color: var(--primary);
+      font-size: 11px;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .list-item-icon {
+      width: 36px;
+      height: 36px;
+      background-color: var(--background);
+      border-radius: 8px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .list-item-details {
+      flex-grow: 1;
+    }
+
+    .list-item-title {
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .list-item-subtitle {
+      font-size: 11px;
+      color: var(--medium-gray);
+    }
+
+    .list-item-amount {
+      font-weight: bold;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .product-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--light-gray);
+    }
+
+    .product-image {
+      height: 100px;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-details {
+      padding: 8px;
+    }
+
+    .product-title {
+      font-size: 11px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 12px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background-color: var(--white);
+    }
+
+    .primary-button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .text-link {
+      text-align: center;
+      color: var(--primary);
+      margin: 10px 0;
+      font-size: 12px;
+    }
+
+    .category-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 5px 0 15px 0;
+    }
+
+    .category-item {
+      min-width: 80px;
+      height: 80px;
+      background-color: var(--white);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border: 1px solid var(--light-gray);
+    }
+
+    .category-icon {
+      width: 30px;
+      height: 30px;
+      background-color: var(--background);
+      border-radius: 50%;
+    }
+
+    .category-name {
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .search-bar {
+      display: flex;
+      background-color: var(--background);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px;
+      align-items: center;
+    }
+
+    .map-container {
+      height: 200px;
+      background-color: var(--light-gray);
+      border-radius: 10px;
+      margin-bottom: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      width: 0;
+      height: 0;
+    }
+
+    .map-pin:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--primary);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+    }
+
+    .map-pin:before {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: white;
+      border-radius: 50%;
+      top: 6px;
+      left: 6px;
+      z-index: 1;
+    }
+
+    .delivery-status {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .progress-bar:before {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background-color: var(--light-gray);
+      width: 100%;
+      z-index: 1;
+    }
+
+    .progress-step {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--white);
+      border: 2px solid var(--light-gray);
+      z-index: 2;
+      position: relative;
+    }
+
+    .progress-step.active {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      font-size: 10px;
+    }
+
+    .wallet-card {
+      background: linear-gradient(45deg, var(--secondary), #10B981);
+      color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .social-post {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid var(--light-gray);
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: var(--background);
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .post-content {
+      margin-bottom: 10px;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 15px;
+      border-top: 1px solid var(--light-gray);
+      padding-top: 10px;
+      color: var(--dark-gray);
+    }
+
+    .tab-navigation {
+      display: flex;
+      justify-content: space-around;
+      background-color: var(--white);
+      padding: 10px 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    .tab-icon {
+      width: 20px;
+      height: 20px;
+      background-color: var(--background);
+      border-radius: 50%;
+      margin-bottom: 3px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .radio-option {
+      flex: 1;
+      background-color: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      font-size: 11px;
+      position: relative;
+    }
+
+    .radio-option.selected {
+      border-color: var(--primary);
+    }
+
+    .radio-option.selected:after {
+      content: "✓";
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: var(--primary);
+      color: white;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .dashboard-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid var(--light-gray);
+    }
+
+    .dashboard-card-title {
+      font-size: 10px;
+      color: var(--medium-gray);
+      margin-bottom: 5px;
+    }
+
+    .dashboard-card-value {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .chart-container {
+      height: 150px;
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chart-placeholder {
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(90deg, var(--light-gray) 25%, var(--background) 37%, var(--light-gray) 63%);
+      background-size: 400% 100%;
+      animation: chart-loading 1.4s infinite;
+      border-radius: 4px;
+    }
+
+    @keyframes chart-loading {
+      0% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0 50%;
+      }
+    }
+
+    .screen-filter {
+      position: sticky;
+      top: 0;
+      background-color: #F0F2F5;
+      padding: 10px 0;
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-button {
+      background-color: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 20px;
+      padding: 5px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .filter-button.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Full screen modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: var(--white);
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .zoom-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      z-index: 2000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .zoomed-screen {
+      background-color: var(--white);
+      width: 375px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 30px;
+    }
+
+    .zoom-controls {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .zoom-button {
+      background-color: var(--white);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .close-zoom {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="figma-header">
+    <div class="figma-logo"></div>
+    <h1>PayLate App Figma-style Mockup</h1>
+  </div>
+
+  <div class="screen-filter">
+    <button class="filter-button active" onclick="filterScreens('all')">All Screens</button>
+    <button class="filter-button" onclick="filterScreens('consumer')">Consumer</button>
+    <button class="filter-button" onclick="filterScreens('business')">Business</button>
+    <button class="filter-button" onclick="filterScreens('delivery')">Delivery</button>
+    <button class="filter-button" onclick="filterScreens('admin')">Admin</button>
+  </div>
+
+  <div class="screens-container" id="screens-container">
+
+    <!-- 1. Splash & Login Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Splash & Login Screen
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div style="height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;">
+              <div style="margin-bottom: 40px;">
+                <div class="logo-icon" style="width: 60px; height: 60px; margin: 0 auto 10px;"></div>
+                <div style="font-size: 24px; font-weight: bold; color: var(--primary);">payLate</div>
+                <div style="font-size: 14px; color: var(--medium-gray);">حسابك بعدين</div>
+              </div>
+              
+              <div style="width: 100%;">
+                <input type="text" class="input-field" placeholder="Phone number or Email">
+                <input type="password" class="input-field" placeholder="Password">
+                
+                <div class="primary-button">Log In</div>
+                
+                <div class="text-link">Forgot Password?</div>
+                
+                <div style="margin: 30px 0; display: flex; align-items: center;">
+                  <div style="flex-grow: 1; height: 1px; background-color: var(--light-gray);"></div>
+                  <div style="margin: 0 10px; color: var(--medium-gray); font-size: 12px;">OR</div>
+                  <div style="flex-grow: 1; height: 1px; background-color: var(--light-gray);"></div>
+                </div>
+                
+                <div style="border: 1px solid var(--primary); color: var(--primary); border-radius: 8px; padding: 12px; text-align: center; font-weight: 500;">Register New Account</div>
+                
+                <div style="margin-top: 20px; text-align: center; color: var(--medium-gray); font-size: 12px;">
+                  Language: English | العربية
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Registration Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Registration Screen
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div style="display: flex; align-items: center;">
+                <div style="width: 24px; height: 24px; background-color: var(--light-gray); border-radius: 50%; margin-right: 10px;">←</div>
+                <div>Back</div>
+              </div>
+              <div style="font-weight: 500;">Step 2 of 5</div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+              <h2 style="font-size: 18px; margin-bottom: 5px;">Personal Information</h2>
+              <p style="color: var(--medium-gray); font-size: 12px;">Please enter your details below</p>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="input-field" placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="text" class="input-field" placeholder="+964 XXX XXX XXXX">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="input-field" placeholder="example@email.com">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">ID Verification</label>
+              <div style="display: flex; gap: 10px;">
+                <div style="flex: 1; height: 100px; background-color: var(--light-gray); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--medium-gray);">
+                  ID Front
+                </div>
+                <div style="flex: 1; height: 100px; background-color: var(--light-gray); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--medium-gray);">
+                  ID Back
+                </div>
+              </div>
+            </div>
+            
+            <div class="primary-button">Continue</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Consumer Dashboard -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Consumer Dashboard
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <!-- App Header -->
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                PayLate
+              </div>
+              <div class="profile-icon"></div>
+            </div>
+            
+            <!-- Credit Balance Card -->
+            <div class="balance-card">
+              <div class="balance-title">Available Credit</div>
+              <div class="balance-amount">$1,200.00</div>
+              <div class="balance-details">
+                <div class="limit-info">Limit: $2,000.00</div>
+                <div class="date-info">Due: 5 days</div>
+              </div>
+            </div>
+            
+            <!-- Quick Action Buttons -->
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon">🛒</div>
+                Shop
+              </div>
+              <div class="action-button">
+                <div class="action-icon">💰</div>
+                Pay Debts
+              </div>
+              <div class="action-button">
+                <div class="action-icon">👝</div>
+                My Wallet
+              </div>
+              <div class="action-button">
+                <div class="action-icon">📦</div>
+                Deliveries
+              </div>
+            </div>
+            
+            <!-- Recent Transactions -->
+            <div class="section-title">
+              <span>Recent Transactions</span>
+              <span class="see-all">See All</span>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">🛒</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Market Grocery</div>
+                <div class="list-item-subtitle">May 10, 2025</div>
+              </div>
+              <div class="list-item-amount">-$45.80</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">💊</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Pharmacy Plus</div>
+                <div class="list-item-subtitle">May 8, 2025</div>
+              </div>
+              <div class="list-item-amount">-$32.50</div>
+            </div>
+            
+            <!-- Pending Payments -->
+            <div class="section-title">
+              <span>Pending Payments</span>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">⏰</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Monthly Payment</div>
+                <div class="list-item-subtitle">Due May 17, 2025</div>
+              </div>
+              <div class="list-item-amount">$200.00</div>
+            </div>
+            
+            <!-- Product Recommendations -->
+            <div class="section-title">
+              <span>Recommended For You</span>
+              <span class="see-all">More</span>
+            </div>
+            <div class="product-grid">
+              <div class="product-card">
+                <div class="product-image">Food</div>
+                <div class="product-details">
+                  <div class="product-title">Rice 5kg Bag</div>
+                  <div class="product-price">$12.50</div>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Medicine</div>
+                <div class="product-details">
+                  <div class="product-title">Vitamin Complex</div>
+                  <div class="product-price">$8.75</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Social Feed Highlights -->
+            <div class="section-title">
+              <span>Community Activity</span>
+            </div>
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div class="post-user-info">
+                  <div class="post-username">Maria Lopez</div>
+                  <div class="post-time">2 hours ago</div>
+                </div>
+              </div>
+              <div class="post-content">
+                Just got my monthly groceries delivered using PayLate. So convenient!
+              </div>
+              <div class="post-actions">
+                <div>👍 Like</div>
+                <div>💬 Comment</div>
+                <div>↗️ Share</div>
+              </div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon">🏠</div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon">🔍</div>
+                Explore
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon">📊</div>
+                Analytics
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon">👤</div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Product Marketplace Screen -->
+    <div class="screen">
+      <div class="screen-header">
+        Product Marketplace
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <!-- App Header -->
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                PayLate Market
+              </div>
+              <div class="cart-icon">🛒</div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-bar">
+              <div>🔍</div>
+              <div>Search products...</div>
+            </div>
+            
+            <!-- Category Navigation -->
+            <div class="section-title">
+              <span>Categories</span>
+            </div>
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon">🥛</div>
+                <div class="category-name">Dairy</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon">🥩</div>
+                <div class="category-name">Meat</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon">🥤</div>
+                <div class="category-name">Beverages</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon">🥫</div>
+                <div class="category-name">Canned</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon">🌱</div>
+                <div class="category-name">Legumes</div>
+              </div>
+            </div>
+            
+            <!-- Nearby Stores -->
+            <div class="section-title">
+              <span>Nearby Stores</span>
+              <span class="see-all">View Map</span>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">🏪</div>
+              <div class="list-item-details">
+                <div class="list-item-title">SuperMercado</div>
+                <div class="list-item-subtitle">0.5 miles away</div>
+              </div>
+              <div class="list-item-amount">Open</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon">🏪</div>
+              <div class="list-item-details">
+                <div class="list-item-title">QuickMart</div>
+                <div class="list-item-subtitle">0.8 miles away</div>
+              </div>
+              <div class="list-item-amount">Open</div>
+            </div>
+            
+            <!-- Product Listings -->
+            <div class="section-title">
+              <span>Popular Products</span>
+              <span class="see-all">See All</span>
+            </div>
+            <div class="product-grid">
+              <div class="product-card">
+                <div class="product-image">Rice</div>
+                <div class="product-details">
+                  <div class="product-title">Rice 5kg Bag</div>
+                  <div class="product-price">$12.50</div>
+                  <button class="add-to-cart">+ Add</button>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Milk</div>
+                <div class="product-details">
+                  <div class="product-title">Milk 1L</div>
+                  <div class="product-price">$3.25</div>
+                  <button class="add-to-cart">+ Add</button>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Beans</div>
+                <div class="product-details">
+                  <div class="product-title">Black Beans 2kg</div>
+                  <div class="product-price">$5.75</div>
+                  <button class="add-to-cart">+ Add</button>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Medicine</div>
+                <div class="product-details">
+                  <div class="product-title">Pain Relief Tablets</div>
+                  <div class="product-price">$4.99</div>
+                  <button class="add-to-cart">+ Add</button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Special Deals -->
+            <div class="section-title">
+              <span>Special Deals</span>
+            </div>
+            <div class="product-card" style="width: 100%">
+              <div class="product-image" style="height: 120px">Special Deal</div>
+              <div class="product-details">
+                <div class="product-title">Buy 1 Get 1 Free - Cleaning Supplies</div>
+                <div class="product-price">From $8.99</div>
+                <button class="add-to-cart">View Deal</button>
+              </div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon">🏠</div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon">🔍</div>
+                Explore
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon">🛒</div>
+                Cart
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon">👤</div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Payment Plan Options Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Payment Plan Options Screen
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div style="height: 100%; display: flex; flex-direction: column;">
+              <!-- Header -->
+              <div style="padding: 16px; display: flex; align-items: center; position: relative;">
+                <div style="position: absolute; left: 0; padding-left: 16px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div style="flex: 1; text-align: center; font-weight: 500;">Payment plan</div>
+              </div>
+
+              <!-- Content -->
+              <div style="flex: 1; padding: 16px; overflow-y: auto;">
+                <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Choose a payment plan</h2>
+                <p style="color: var(--medium-gray); margin-bottom: 24px;">Select how you'd like to pay for your $1,200.00 purchase</p>
+                
+                <!-- Payment Plan Options -->
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <!-- Option 1 -->
+                  <div style="border: 1px solid var(--light-gray); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <h3 style="font-weight: 500; margin-bottom: 4px;">Pay in 4</h3>
+                      <p style="color: var(--medium-gray); font-size: 14px;">4 interest-free payments of $300.00 every 2 weeks</p>
+                    </div>
+                    <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--light-gray);"></div>
+                  </div>
+                  
+                  <!-- Option 2 (Selected) -->
+                  <div style="border: 2px solid var(--primary); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center; background-color: var(--primary-light);">
+                    <div>
+                      <h3 style="font-weight: 500; margin-bottom: 4px;">Pay monthly</h3>
+                      <p style="color: var(--medium-gray); font-size: 14px;">3 monthly payments of $416.00</p>
+                      <p style="color: var(--accent); font-size: 12px; margin-top: 4px;">Includes 4% interest</p>
+                    </div>
+                    <div style="width: 20px; height: 20px; border-radius: 50%; border: 6px solid var(--primary); background-color: white;"></div>
+                  </div>
+                  
+                  <!-- Option 3 -->
+                  <div style="border: 1px solid var(--light-gray); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <h3 style="font-weight: 500; margin-bottom: 4px;">Pay later</h3>
+                      <p style="color: var(--medium-gray); font-size: 14px;">Full payment of $1,200.00 in 30 days</p>
+                    </div>
+                    <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--light-gray);"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div style="padding: 16px; border-top: 1px solid var(--light-gray);">
+                <div class="primary-button">Continue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Payment Schedule Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Payment Schedule Screen
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div style="height: 100%; display: flex; flex-direction: column;">
+              <!-- Header -->
+              <div style="padding: 16px; display: flex; align-items: center; position: relative;">
+                <div style="position: absolute; left: 0; padding-left: 16px;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div style="flex: 1; text-align: center; font-weight: 500;">Payment schedule</div>
+              </div>
+
+              <!-- Content -->
+              <div style="flex: 1; padding: 16px; overflow-y: auto;">
+                <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">Your payment schedule</h2>
+                <p style="color: var(--medium-gray); margin-bottom: 24px;">You'll be charged automatically on these dates</p>
+                
+                <!-- Payment Schedule -->
+                <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+                  <!-- Payment 1 -->
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid var(--light-gray); border-radius: 12px; background-color: var(--success-light);">
+                    <div>
+                      <p style="font-size: 14px; color: var(--medium-gray);">Today</p>
+                      <p style="font-weight: 500;">$416.00</p>
+                    </div>
+                    <div style="color: var(--success); font-weight: 500; font-size: 14px;">Paid</div>
+                  </div>
+                  
+                  <!-- Payment 2 -->
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid var(--light-gray); border-radius: 12px;">
+                    <div>
+                      <p style="font-size: 14px; color: var(--medium-gray);">June 12, 2025</p>
+                      <p style="font-weight: 500;">$416.00</p>
+                    </div>
+                    <div style="color: var(--medium-gray); font-size: 14px;">Upcoming</div>
+                  </div>
+                  
+                  <!-- Payment 3 -->
+                  <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid var(--light-gray); border-radius: 12px;">
+                    <div>
+                      <p style="font-size: 14px; color: var(--medium-gray);">July 12, 2025</p>
+                      <p style="font-weight: 500;">$416.00</p>
+                    </div>
+                    <div style="color: var(--medium-gray); font-size: 14px;">Upcoming</div>
+                  </div>
+                </div>
+                
+                <!-- Total Section -->
+                <div style="padding: 16px; border: 1px solid var(--light-gray); border-radius: 12px; margin-bottom: 24px;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--medium-gray);">Subtotal</span>
+                    <span>$1,200.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--medium-gray);">Interest (4%)</span>
+                    <span>$48.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--light-gray); font-weight: 600;">
+                    <span>Total</span>
+                    <span>$1,248.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div style="padding: 16px; border-top: 1px solid var(--light-gray);">
+                <div class="primary-button">Confirm payment plan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Confirmation Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Confirmation Screen
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div style="height: 100%; display: flex; flex-direction: column;">
+              <!-- Content -->
+              <div style="flex: 1; padding: 24px; overflow-y: auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <!-- Success Icon -->
+                <div style="width: 80px; height: 80px; background-color: var(--success); display: flex; justify-content: center; align-items: center; border-radius: 50%; margin-bottom: 24px; margin-top: 40px;">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 20L18 26L28 14" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                
+                <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 8px;">All set!</h2>
+                <p style="color: var(--medium-gray); margin-bottom: 32px;">Your payment plan has been confirmed</p>
+                
+                <!-- Confirmation Details -->
+                <div style="width: 100%; border: 1px solid var(--light-gray); border-radius: 12px; padding: 16px; margin-bottom: 24px;">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="color: var(--medium-gray);">Order number</span>
+                    <span>#12345678</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="color: var(--medium-gray);">Total amount</span>
+                    <span>$1,248.00</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="color: var(--medium-gray);">Payment method</span>
+                    <span>•••• 4321</span>
+                  </div>
+                </div>
+                
+                <!-- Next Payment -->
+                <div style="margin-bottom: 24px; width: 100%;">
+                  <p style="color: var(--medium-gray); margin-bottom: 4px;">Your next payment of $416.00 is on</p>
+                  <p style="font-weight: 600; font-size: 18px;">June 12, 2025</p>
+                </div>
+                
+                <!-- Notification Option -->
+                <div style="display: flex; align-items: center; width: 100%; margin-bottom: 32px;">
+                  <div style="width: 20px; height: 20px; border-radius: 4px; border: 2px solid var(--primary); background-color: var(--primary); margin-right: 12px; display: flex; justify-content: center; align-items: center;">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 6L5 9L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <label style="cursor: pointer;">Remind me before each payment</label>
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div style="padding: 16px; border-top: 1px solid var(--light-gray);">
+                <div class="primary-button">Back to shopping</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Order Confirmation Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Order Confirmation
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate
+              </div>
+            </div>
+            
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Order Confirmed! 🎉</div>
+                  <div class="list-item-subtitle">Your order has been placed successfully</div>
+                </div>
+              </div>
+              
+              <div class="delivery-status">
+                <div class="section-title">Order #A78523B</div>
+                <div class="balance-title">Estimated Delivery</div>
+                <div class="balance-amount">May 15, 2025 • 2:00-4:00 PM</div>
+                
+                <div class="form-group">
+                  <div class="form-label">Tracking Link</div>
+                  <div class="text-link">https://paylate.com/track/A78523B</div>
+                </div>
+                
+                <div class="section-title">Order Summary</div>
+                <div class="list-item">
+                  <div class="list-item-icon"></div>
+                  <div class="list-item-details">
+                    <div class="list-item-title">Premium Headphones</div>
+                    <div class="list-item-subtitle">Qty: 1</div>
+                  </div>
+                  <div class="list-item-amount">$89.99</div>
+                </div>
+                <div class="list-item">
+                  <div class="list-item-icon"></div>
+                  <div class="list-item-details">
+                    <div class="list-item-title">Wireless Charger</div>
+                    <div class="list-item-subtitle">Qty: 2</div>
+                  </div>
+                  <div class="list-item-amount">$45.98</div>
+                </div>
+                
+                <div class="balance-details">
+                  <span>Total</span>
+                  <span>$135.97</span>
+                </div>
+                
+                <div class="primary-button">Track Order</div>
+                <div style="text-align: center; color: var(--primary); margin: 10px 0;">Continue Shopping</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 9. Order Tracking Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Order Tracking
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate
+              </div>
+            </div>
+            
+            <div class="section-title">Tracking Order #A78523B</div>
+            
+            <div class="map-container">
+              <div class="map-pin"></div>
+            </div>
+            
+            <div class="delivery-status">
+              <div class="list-item">
+                <div class="user-avatar"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Ahmad Khalid</div>
+                  <div class="list-item-subtitle">⭐ 4.9 • Express Delivery</div>
+                </div>
+                <div class="primary-button" style="width: auto; padding: 5px 10px; font-size: 10px;">Contact</div>
+              </div>
+              
+              <div class="balance-title">Estimated Arrival</div>
+              <div class="balance-amount">3:45 PM (17 minutes)</div>
+              
+              <div class="progress-bar">
+                <div class="progress-step active"></div>
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+              </div>
+              <div class="progress-labels">
+                <span>Confirmed</span>
+                <span>Preparing</span>
+                <span>On the way</span>
+                <span>Delivered</span>
+              </div>
+              
+              <div class="section-title">Order Details</div>
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Premium Headphones</div>
+                  <div class="list-item-subtitle">Qty: 1</div>
+                </div>
+                <div class="list-item-amount">$89.99</div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Wireless Charger</div>
+                  <div class="list-item-subtitle">Qty: 2</div>
+                </div>
+                <div class="list-item-amount">$45.98</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Payment & Debt Management Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Payment & Debt Management
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate
+              </div>
+            </div>
+            
+            <div class="balance-card">
+              <div class="balance-title">Current Outstanding Balance</div>
+              <div class="balance-amount">$574.32</div>
+              <div class="balance-details">
+                <span>Credit Limit: $1,500.00</span>
+                <span>Available: $925.68</span>
+              </div>
+            </div>
+            
+            <div class="social-post">
+              <div class="section-title">Payment Due</div>
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Minimum Payment</div>
+                  <div class="list-item-subtitle">Due in 5 days (May 17)</div>
+                </div>
+                <div class="list-item-amount">$57.43</div>
+              </div>
+              
+              <div class="chart-container">
+                <div class="chart-placeholder"></div>
+              </div>
+              <div class="balance-title">Credit Utilization</div>
+              <div class="primary-button">Make Payment</div>
+            </div>
+            
+            <div class="section-title">Payment History</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Payment Made</div>
+                <div class="list-item-subtitle">Apr 17, 2025</div>
+              </div>
+              <div class="list-item-amount">$65.00</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Payment Made</div>
+                <div class="list-item-subtitle">Mar 16, 2025</div>
+              </div>
+              <div class="list-item-amount">$82.50</div>
+            </div>
+            
+            <div class="section-title">Payment Methods</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">•••• 4582</div>
+                <div class="list-item-subtitle">Credit Card (Default)</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Automatic Payments</div>
+              <div class="radio-group">
+                <div class="radio-option selected">Minimum</div>
+                <div class="radio-option">Full Balance</div>
+                <div class="radio-option">Custom</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Digital Wallet Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Digital Wallet
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate
+              </div>
+            </div>
+            
+            <div class="wallet-card">
+              <div class="balance-title">Wallet Balance</div>
+              <div class="balance-amount">$328.45</div>
+              <div class="balance-details">
+                <span>Total Interest Earned: $12.35</span>
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Add Funds
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Transfer
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Withdraw
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                QR Code
+              </div>
+            </div>
+            
+            <div class="section-title">Long-term Savings <span class="see-all">4.5% APR</span></div>
+            <div class="social-post">
+              <div class="balance-title">Savings Balance</div>
+              <div class="balance-amount">$1,250.00</div>
+              <div class="balance-details">
+                <span>Interest this month: $4.68</span>
+              </div>
+              <div class="primary-button">Add to Savings</div>
+            </div>
+            
+            <div class="section-title">Recent Transactions</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Electronics Store</div>
+                <div class="list-item-subtitle">May 10, 2025</div>
+              </div>
+              <div class="list-item-amount">-$135.97</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Fund Transfer</div>
+                <div class="list-item-subtitle">May 7, 2025</div>
+              </div>
+              <div class="list-item-amount">+$200.00</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Coffee Shop</div>
+                <div class="list-item-subtitle">May 5, 2025</div>
+              </div>
+              <div class="list-item-amount">-$7.85</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. User Profile Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        User Profile
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate
+              </div>
+            </div>
+            
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Ahmad AlSaleh</div>
+                  <div class="list-item-subtitle">@ahmad.saleh • Member since 2023</div>
+                </div>                
+              </div>
+              <div class="primary-button">Edit Profile</div>
+            </div>
+            
+            <div class="section-title">Account Settings</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Personal Information</div>
+                <div class="list-item-subtitle">Name, Email, Phone</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Notification Preferences</div>
+                <div class="list-item-subtitle">Manage your notifications</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Security Settings</div>
+                <div class="list-item-subtitle">Password, Two-factor authentication</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Payment Methods</div>
+                <div class="list-item-subtitle">Manage cards and bank accounts</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Address Book</div>
+                <div class="list-item-subtitle">Delivery and billing addresses</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Language Preferences</div>
+                <div class="list-item-subtitle">English | العربية</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Help & Support</div>
+                <div class="list-item-subtitle">Contact us, FAQs, Support Center</div>
+              </div>
+            </div>
+            
+            <div style="margin: 20px 0; text-align: center; color: var(--medium-gray);">
+              App Version 2.5.3
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. Social Feed Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Social Feed
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Social
+              </div>
+            </div>
+            
+            <div class="social-post" style="padding-bottom: 10px;">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Share your thoughts...</div>
+                </div>
+              </div>
+              <div class="post-actions">
+                <div>📷 Photo</div>
+                <div>📍 Location</div>
+                <div>📊 Poll</div>
+              </div>
+            </div>
+            
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Layla Hassan</div>
+                  <div class="list-item-subtitle">2 hours ago</div>
+                </div>
+              </div>
+              <div class="post-content">
+                Just found an amazing deal on headphones using payLate! No interest and super easy checkout. Anyone else tried these? #TechDeals
+              </div>
+              <div class="post-actions">
+                <div>❤️ 24</div>
+                <div>💬 8</div>
+                <div>↗️ Share</div>
+              </div>
+            </div>
+            
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Tech Store</div>
+                  <div class="list-item-subtitle">Sponsored • 3 hours ago</div>
+                </div>
+              </div>
+              <div class="post-content">
+                🎉 Summer Sale Event! Get up to 50% off on all electronics and pay later with 0% interest. Limited time offer! #SummerSale
+              </div>
+              <div class="post-actions">
+                <div>❤️ 142</div>
+                <div>💬 37</div>
+                <div>↗️ Share</div>
+              </div>
+            </div>
+            
+            <div class="section-title">Trending Topics</div>
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-name">#TechDeals</div>
+              </div>
+              <div class="category-item">
+                <div class="category-name">#SummerSale</div>
+              </div>
+              <div class="category-item">
+                <div class="category-name">#NoInterest</div>
+              </div>
+              <div class="category-item">
+                <div class="category-name">#PaySmarter</div>
+              </div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Discover
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Notifications
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Maps & Location Screen -->
+    <div class="screen" data-screen-type="consumer">
+      <div class="screen-header">
+        Maps & Location
+        <span class="user-type">Consumer</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Maps
+              </div>
+            </div>
+            
+            <div class="search-bar">
+              <div class="list-item-icon"></div>
+              <div style="flex-grow: 1;">Search for stores...</div>
+            </div>
+            
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">All</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Electronics</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Fashion</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Grocery</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Restaurants</div>
+              </div>
+            </div>
+            
+            <div class="map-container">
+              <div class="map-pin"></div>
+            </div>
+            
+            <div class="section-title">Nearby Stores (5km radius)</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Tech Galaxy</div>
+                <div class="list-item-subtitle">0.7km • Open until 10:00 PM</div>
+              </div>
+              <div class="primary-button" style="width: auto; padding: 5px 10px; font-size: 10px;">Navigate</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Fashion Hub</div>
+                <div class="list-item-subtitle">1.2km • Open until 9:00 PM</div>
+              </div>
+              <div class="primary-button" style="width: auto; padding: 5px 10px; font-size: 10px;">Navigate</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Grocery Market</div>
+                <div class="list-item-subtitle">2.3km • Open until 11:00 PM</div>
+              </div>
+              <div class="primary-button" style="width: auto; padding: 5px 10px; font-size: 10px;">Navigate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. Business Registration Screen -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Business Registration
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Business
+              </div>
+            </div>
+            
+            <div class="section-title">Business Registration (Step 2 of 5)</div>
+            
+            <div class="form-group">
+              <div class="form-label">Business Type</div>
+              <div class="radio-group">
+                <div class="radio-option">Marketer</div>
+                <div class="radio-option selected">Retailer</div>
+                <div class="radio-option">Wholesaler</div>
+                <div class="radio-option">Industrial</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Business Information</div>
+              <input type="text" class="input-field" placeholder="Business Name">
+              <input type="text" class="input-field" placeholder="Registration Number">
+              <input type="text" class="input-field" placeholder="Business Address">
+              <input type="text" class="input-field" placeholder="Contact Number">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Upload Documents</div>
+              <div class="social-post">
+                <div class="post-header">
+                  <div class="list-item-icon"></div>
+                  <div class="list-item-details">
+                    <div class="list-item-title">Business License</div>
+                    <div class="list-item-subtitle">PDF or JPG (Max 5MB)</div>
+                  </div>
+                  <div class="primary-button" style="width: auto; padding: 5px 10px; font-size: 10px;">Upload</div>
+                </div>
+              </div>
+              <div class="social-post">
+                <div class="post-header">
+                  <div class="list-item-icon"></div>
+                  <div class="list-item-details">
+                    <div class="list-item-title">Owner ID</div>
+                    <div class="list-item-subtitle">PDF or JPG (Max 5MB)</div>
+                  </div>
+                  <div class="primary-button" style="width: auto; padding: 5px 10px; font-size: 10px;">Upload</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Collateral Registration</div>
+              <div class="radio-group">
+                <div class="radio-option selected">Vehicle</div>
+                <div class="radio-option">Property</div>
+              </div>
+              <input type="text" class="input-field" placeholder="Vehicle Registration Number">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Credit Limit (Based on Business Type)</div>
+              <div class="radio-group">
+                <div class="radio-option">$5,000</div>
+                <div class="radio-option selected">$10,000</div>
+                <div class="radio-option">$25,000</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Bank Account Details</div>
+              <input type="text" class="input-field" placeholder="Bank Name">
+              <input type="text" class="input-field" placeholder="Account Number">
+              <input type="text" class="input-field" placeholder="Branch Code">
+            </div>
+            
+            <div class="primary-button">Next</div>
+            <div style="text-align: center; color: var(--primary); margin: 10px 0;">Back</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. Business Dashboard -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Business Dashboard
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Business
+              </div>
+              <div class="user-avatar"></div>
+            </div>
+            
+            <div class="balance-card">
+              <div class="balance-title">Available Credit</div>
+              <div class="balance-amount">$25,000.00</div>
+              <div class="balance-details">
+                <span>Credit Limit: $50,000</span>
+                <span>50% Used</span>
+              </div>
+            </div>
+            
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Accounts Receivable</div>
+                <div class="dashboard-card-value">$15,720</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Accounts Payable</div>
+                <div class="dashboard-card-value">$8,350</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Monthly Revenue</div>
+                <div class="dashboard-card-value">$42,630</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Pending Orders</div>
+                <div class="dashboard-card-value">12</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              <span>Quick Actions</span>
+            </div>
+            
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon">I</div>
+                <span>Inventory</span>
+              </div>
+              <div class="action-button">
+                <div class="action-icon">O</div>
+                <span>Orders</span>
+              </div>
+              <div class="action-button">
+                <div class="action-icon">P</div>
+                <span>Payments</span>
+              </div>
+              <div class="action-button">
+                <div class="action-icon">R</div>
+                <span>Reports</span>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              <span>Recent Activity</span>
+              <span class="see-all">See All</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">$</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Payment Received</div>
+                <div class="list-item-subtitle">From Customer #1089</div>
+              </div>
+              <div class="list-item-amount">$1,240</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">O</div>
+              <div class="list-item-details">
+                <div class="list-item-title">New Order</div>
+                <div class="list-item-subtitle">Order #85492 - 5 items</div>
+              </div>
+              <div class="list-item-amount">$285</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">I</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Low Stock Alert</div>
+                <div class="list-item-subtitle">3 products below threshold</div>
+              </div>
+            </div>
+
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Orders</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Inventory</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Finance</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. Inventory Management -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Inventory Management
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Inventory
+              </div>
+              <div class="user-avatar"></div>
+            </div>
+            
+            <div class="search-bar">
+              <div style="margin-right: 10px;">🔍</div>
+              <div>Search products...</div>
+            </div>
+            
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon">+</div>
+                <span>Add Product</span>
+              </div>
+              <div class="action-button">
+                <div class="action-icon">↑↓</div>
+                <span>Import/Export</span>
+              </div>
+            </div>
+            
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">All Items</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Low Stock</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Featured</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Categories</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              <span>Product Inventory</span>
+              <span class="see-all">Filter</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">P</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name A</div>
+                <div class="list-item-subtitle">SKU: 1234 • 50 in stock</div>
+              </div>
+              <div class="list-item-amount">$29.99</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">P</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name B</div>
+                <div class="list-item-subtitle">SKU: 2345 • 12 in stock</div>
+              </div>
+              <div class="list-item-amount">$19.99</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">P</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name C</div>
+                <div class="list-item-subtitle">SKU: 3456 • 5 in stock</div>
+              </div>
+              <div class="list-item-amount">$39.99</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">P</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name D</div>
+                <div class="list-item-subtitle">SKU: 4567 • 28 in stock</div>
+              </div>
+              <div class="list-item-amount">$24.99</div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Orders</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Inventory</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Finance</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. Order Management -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Order Management
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Orders
+              </div>
+              <div class="user-avatar"></div>
+            </div>
+            
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">New</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Processing</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Completed</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Cancelled</div>
+              </div>
+            </div>
+            
+            <div class="search-bar">
+              <div style="margin-right: 10px;">🔍</div>
+              <div>Search orders...</div>
+            </div>
+            
+            <div class="section-title">
+              <span>New Orders</span>
+              <span class="see-all">Process All</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">#</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Order #85492</div>
+                <div class="list-item-subtitle">May 11, 2025 • 5 items</div>
+              </div>
+              <div class="list-item-amount">$285</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">#</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Order #85491</div>
+                <div class="list-item-subtitle">May 11, 2025 • 2 items</div>
+              </div>
+              <div class="list-item-amount">$128</div>
+            </div>
+            
+            <div class="section-title">
+              <span>Processing Orders</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">#</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Order #85490</div>
+                <div class="list-item-subtitle">May 10, 2025 • 8 items</div>
+              </div>
+              <div class="list-item-amount">$472</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">#</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Order #85489</div>
+                <div class="list-item-subtitle">May 10, 2025 • 1 item</div>
+              </div>
+              <div class="list-item-amount">$59</div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Orders</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Inventory</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Finance</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 19. Financial Overview -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Financial Overview
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Finance
+              </div>
+              <div class="user-avatar"></div>
+            </div>
+            
+            <div class="balance-card">
+              <div class="balance-title">Credit Limit</div>
+              <div class="balance-amount">$50,000.00</div>
+              <div class="balance-details">
+                <span>Available: $25,000</span>
+                <span>Used: $25,000</span>
+              </div>
+            </div>
+            
+            <div class="chart-container">
+              <div class="chart-placeholder"></div>
+            </div>
+            
+            <div class="section-title">
+              <span>Accounts Receivable</span>
+              <span class="see-all">Details</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">$</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Customer #1089</div>
+                <div class="list-item-subtitle">Due May 15, 2025</div>
+              </div>
+              <div class="list-item-amount">$3,580</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">$</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Customer #1072</div>
+                <div class="list-item-subtitle">Due May 20, 2025</div>
+              </div>
+              <div class="list-item-amount">$2,150</div>
+            </div>
+            
+            <div class="section-title">
+              <span>Accounts Payable</span>
+              <span class="see-all">Details</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">$</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Supplier #456</div>
+                <div class="list-item-subtitle">Due May 18, 2025</div>
+              </div>
+              <div class="list-item-amount">$4,200</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">$</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Supplier #283</div>
+                <div class="list-item-subtitle">Due May 25, 2025</div>
+              </div>
+              <div class="list-item-amount">$1,850</div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Orders</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Inventory</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Finance</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20. Supplier Catalog -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Supplier Catalog
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Suppliers
+              </div>
+              <div class="user-avatar"></div>
+            </div>
+            
+            <div class="search-bar">
+              <div style="margin-right: 10px;">🔍</div>
+              <div>Search suppliers or products...</div>
+            </div>
+            
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">All</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Favorites</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Top Rated</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Recent</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              <span>Featured Suppliers</span>
+              <span class="see-all">See All</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">S</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Supplier Company A</div>
+                <div class="list-item-subtitle">⭐⭐⭐⭐⭐ • 450+ products</div>
+              </div>
+              <div>➡️</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">S</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Supplier Company B</div>
+                <div class="list-item-subtitle">⭐⭐⭐⭐ • 320+ products</div>
+              </div>
+              <div>➡️</div>
+            </div>
+            
+            <div class="section-title">
+              <span>Popular Products</span>
+              <span class="see-all">See All</span>
+            </div>
+            
+            <div class="product-grid">
+              <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-details">
+                  <div class="product-title">Product Name A</div>
+                  <div class="product-price">$24.99/unit</div>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-details">
+                  <div class="product-title">Product Name B</div>
+                  <div class="product-price">$18.50/unit</div>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-details">
+                  <div class="product-title">Product Name C</div>
+                  <div class="product-price">$32.75/unit</div>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image">Product Image</div>
+                <div class="product-details">
+                  <div class="product-title">Product Name D</div>
+                  <div class="product-price">$15.25/unit</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Orders</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Inventory</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Finance</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 21. Business Analytics -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Business Analytics
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Analytics
+              </div>
+              <div class="user-avatar"></div>
+            </div>
+            
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Sales</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Customers</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Inventory</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Finance</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              <span>Sales Performance</span>
+              <span class="see-all">This Month ▾</span>
+            </div>
+            
+            <div class="chart-container">
+              <div class="chart-placeholder"></div>
+            </div>
+            
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Total Sales</div>
+                <div class="dashboard-card-value">$42,630</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Orders</div>
+                <div class="dashboard-card-value">218</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Avg. Order</div>
+                <div class="dashboard-card-value">$195</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Growth</div>
+                <div class="dashboard-card-value">+12.5%</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              <span>Top Products</span>
+              <span class="see-all">See All</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">1</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name A</div>
+                <div class="list-item-subtitle">125 units sold</div>
+              </div>
+              <div class="list-item-amount">$3,747</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">2</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name B</div>
+                <div class="list-item-subtitle">98 units sold</div>
+              </div>
+              <div class="list-item-amount">$2,938</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon">3</div>
+              <div class="list-item-details">
+                <div class="list-item-title">Product Name C</div>
+                <div class="list-item-subtitle">84 units sold</div>
+              </div>
+              <div class="list-item-amount">$2,515</div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Home</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Orders</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Inventory</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>Finance</span>
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                <span>More</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 22. Loan Management -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Loan Management
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Business
+              </div>
+            </div>
+            
+            <div class="section-title">Business Financing</div>
+            
+            <div class="balance-card">
+              <div class="balance-title">Available Credit</div>
+              <div class="balance-amount">SAR 75,000</div>
+              <div class="balance-details">
+                <span>Business Type: Restaurant</span>
+                <span>Credit Score: 720</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Loan Amount</div>
+              <input type="text" class="input-field" placeholder="Enter amount (SAR)">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Loan Purpose</div>
+              <div class="radio-group">
+                <div class="radio-option selected">Inventory</div>
+                <div class="radio-option">Equipment</div>
+                <div class="radio-option">Expansion</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Repayment Term</div>
+              <input type="text" class="input-field" placeholder="Select term">
+            </div>
+            
+            <div class="chart-container">
+              <div class="chart-placeholder"></div>
+            </div>
+            
+            <div class="section-title">Required Documents</div>
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Business License
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Bank Statements
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Tax Returns
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Financial Statements
+              </div>
+            </div>
+            
+            <div class="primary-button">Apply for Loan</div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Finance
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Business
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 23. Business Profile -->
+    <div class="screen" data-screen-type="business">
+      <div class="screen-header">
+        Business Profile
+        <span class="user-type">Business</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Business
+              </div>
+            </div>
+            
+            <div class="user-avatar" style="width: 80px; height: 80px; margin: 10px auto;"></div>
+            <div style="text-align: center; font-weight: bold; font-size: 16px;">Al Baik Restaurant</div>
+            <div style="text-align: center; color: var(--medium-gray); margin-bottom: 20px;">Restaurant • Jeddah</div>
+            
+            <div class="map-container">
+              <div class="map-pin"></div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Business Information</div>
+              <input type="text" class="input-field" placeholder="Business Name" value="Al Baik Restaurant">
+              <input type="text" class="input-field" placeholder="Business Description">
+              <input type="text" class="input-field" placeholder="Business Category" value="Restaurant">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Contact Information</div>
+              <input type="text" class="input-field" placeholder="Phone Number" value="+966 50 123 4567">
+              <input type="text" class="input-field" placeholder="Email Address" value="contact@albaik.com">
+              <input type="text" class="input-field" placeholder="Website" value="www.albaik.com">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Operating Hours</div>
+              <div class="list-item">
+                <div class="list-item-details">
+                  <div class="list-item-title">Sunday - Thursday</div>
+                </div>
+                <div>10:00 AM - 12:00 AM</div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-details">
+                  <div class="list-item-title">Friday - Saturday</div>
+                </div>
+                <div>10:00 AM - 1:00 AM</div>
+              </div>
+            </div>
+            
+            <div class="section-title">Featured Products</div>
+            <div class="product-grid">
+              <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-details">
+                  <div class="product-title">Chicken Meal</div>
+                  <div class="product-price">SAR 25.00</div>
+                </div>
+              </div>
+              <div class="product-card">
+                <div class="product-image"></div>
+                <div class="product-details">
+                  <div class="product-title">Family Bucket</div>
+                  <div class="product-price">SAR 75.00</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="section-title">Customer Reviews</div>
+            <div style="display: flex; margin-bottom: 10px;">
+              <div style="font-size: 24px; font-weight: bold;">4.8</div>
+              <div style="margin-left: 10px; color: var(--medium-gray);">based on 245 reviews</div>
+            </div>
+            
+            <div class="primary-button">Save Changes</div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Finance
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Business
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 24. Delivery Partner Registration -->
+    <div class="screen" data-screen-type="delivery">
+      <div class="screen-header">
+        Delivery Partner Registration
+        <span class="user-type">Delivery</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Delivery
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+              <div style="font-weight: bold; font-size: 16px;">Become a Delivery Partner</div>
+              <div style="color: var(--medium-gray);">Join our network and start earning</div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Select Delivery Type</div>
+              <div class="radio-group" style="flex-wrap: wrap;">
+                <div class="radio-option">
+                  Special needs
+                  <div style="font-size: 9px; color: var(--medium-gray);">500-1000m range</div>
+                </div>
+                <div class="radio-option selected">
+                  Health
+                  <div style="font-size: 9px; color: var(--medium-gray);">walking - 2km range</div>
+                </div>
+                <div class="radio-option">
+                  Sports
+                  <div style="font-size: 9px; color: var(--medium-gray);">bicycle - 5km range</div>
+                </div>
+                <div class="radio-option">
+                  Fast
+                  <div style="font-size: 9px; color: var(--medium-gray);">vehicle - extended range</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Personal Information</div>
+              <input type="text" class="input-field" placeholder="Full Name">
+              <input type="text" class="input-field" placeholder="Email Address">
+              <input type="text" class="input-field" placeholder="Phone Number">
+              <input type="text" class="input-field" placeholder="National ID/Iqama">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Vehicle Information (if applicable)</div>
+              <input type="text" class="input-field" placeholder="Vehicle Type">
+              <input type="text" class="input-field" placeholder="License Plate Number">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Bank Account Information</div>
+              <input type="text" class="input-field" placeholder="Bank Name">
+              <input type="text" class="input-field" placeholder="IBAN">
+            </div>
+            
+            <div class="form-group">
+              <input type="checkbox" id="terms" style="margin-right: 5px;">
+              <label for="terms">I agree to the terms and conditions and consent to a background check</label>
+            </div>
+            
+            <div class="primary-button">Complete Registration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 25. Delivery Dashboard -->
+    <div class="screen" data-screen-type="delivery">
+      <div class="screen-header">
+        Delivery Dashboard
+        <span class="user-type">Delivery</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Delivery
+              </div>
+              <div style="width: 50px; height: 28px; background-color: var(--secondary); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">Online</div>
+            </div>
+            
+            <div class="wallet-card">
+              <div class="balance-title">Today's Earnings</div>
+              <div class="balance-amount">SAR 120.50</div>
+              <div class="balance-details">
+                <span>Weekly: SAR 842.75</span>
+                <span>Rating: 4.9 ★</span>
+              </div>
+            </div>
+            
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Deliveries</div>
+                <div class="dashboard-card-value">8</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Hours Active</div>
+                <div class="dashboard-card-value">5.2</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Distance</div>
+                <div class="dashboard-card-value">26 km</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Acceptance</div>
+                <div class="dashboard-card-value">92%</div>
+              </div>
+            </div>
+            
+            <div class="section-title">Available Requests</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Al Baik Restaurant</div>
+                <div class="list-item-subtitle">2.3 km away • 15 min</div>
+              </div>
+              <div class="list-item-amount">SAR 18.50</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Pharmacy One</div>
+                <div class="list-item-subtitle">1.8 km away • 12 min</div>
+              </div>
+              <div class="list-item-amount">SAR 15.00</div>
+            </div>
+            
+            <div class="section-title">
+              Weekly Stats
+              <span class="see-all">View Details</span>
+            </div>
+            <div class="chart-container">
+              <div class="chart-placeholder"></div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Orders
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Earnings
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 26. Delivery Request -->
+    <div class="screen" data-screen-type="delivery">
+      <div class="screen-header">
+        Delivery Request
+        <span class="user-type">Delivery</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Delivery
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 10px;">
+              <div style="font-size: 18px; font-weight: bold;">New Delivery Request</div>
+              <div style="font-size: 14px; color: var(--accent);">
+                <span>00:28</span> remaining to accept
+              </div>
+            </div>
+            
+            <div class="map-container">
+              <div class="map-pin"></div>
+            </div>
+            
+            <div class="section-title">Order Details</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Al Baik Restaurant</div>
+                <div class="list-item-subtitle">Prince Sultan Rd, Al Zahra</div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Customer Location</div>
+                <div class="list-item-subtitle">King Fahd Rd, Al Safa</div>
+              </div>
+            </div>
+            
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Distance</div>
+                <div class="dashboard-card-value">2.3 km</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Est. Time</div>
+                <div class="dashboard-card-value">15 min</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Earning</div>
+                <div class="dashboard-card-value">SAR 18.50</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Customer Rating</div>
+                <div class="dashboard-card-value">4.8 ★</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Package Details</div>
+              <div class="list-item">
+                <div class="list-item-details">
+                  <div class="list-item-title">1× Family Bucket</div>
+                  <div class="list-item-subtitle">No special instructions</div>
+                </div>
+              </div>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1; background-color: var(--light-gray); color: var(--dark-gray); padding: 12px; border-radius: 8px; text-align: center; font-weight: 500;">Decline</div>
+              <div style="flex: 1; background-color: var(--primary); color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: 500;">Accept</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 27. Active Delivery -->
+    <div class="screen" data-screen-type="delivery">
+      <div class="screen-header">
+        Active Delivery
+        <span class="user-type">Delivery</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Delivery
+              </div>
+            </div>
+            
+            <div class="map-container" style="height: 250px;">
+              <div class="map-pin"></div>
+            </div>
+            
+            <div class="delivery-status">
+              <div style="font-weight: bold; margin-bottom: 10px;">Delivery in Progress</div>
+              
+              <div class="progress-bar">
+                <div class="progress-step active"></div>
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+              </div>
+              <div class="progress-labels">
+                <div>Accepted</div>
+                <div>At Restaurant</div>
+                <div>Picked Up</div>
+                <div>Delivered</div>
+              </div>
+              
+              <div style="margin: 15px 0;">
+                <div style="font-weight: 500; margin-bottom: 5px;">Next Step:</div>
+                <div style="color: var(--primary); font-weight: bold;">Mark as Picked Up</div>
+              </div>
+              
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Al Baik Restaurant</div>
+                  <div class="list-item-subtitle">Prince Sultan Rd, Al Zahra</div>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Ahmed Mohammed</div>
+                  <div class="list-item-subtitle">King Fahd Rd, Al Safa</div>
+                </div>
+              </div>
+              
+              <div style="margin: 15px 0;">
+                <div style="font-weight: 500; margin-bottom: 5px;">Delivery Instructions:</div>
+                <div>Building 14, Apartment 3. Ring the bell twice.</div>
+              </div>
+              
+              <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <div style="flex: 1; background-color: var(--medium-gray); color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: 500;">Call Customer</div>
+                <div style="flex: 1; background-color: var(--primary); color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: 500;">Mark as Picked Up</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 28. Delivery Earnings -->
+    <div class="screen" data-screen-type="delivery">
+      <div class="screen-header">
+        Delivery Earnings
+        <span class="user-type">Delivery</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Delivery
+              </div>
+            </div>
+            
+            <div class="wallet-card">
+              <div class="balance-title">Available Balance</div>
+              <div class="balance-amount">SAR 1,245.75</div>
+              <div class="balance-details">
+                <span>This Week: SAR 842.75</span>
+                <span>This Month: SAR 3,256.50</span>
+              </div>
+            </div>
+            
+            <div class="primary-button">Withdraw to Bank Account</div>
+            
+            <div class="search-bar">
+              <span>Search transactions</span>
+            </div>
+            
+            <div class="section-title">
+              Earning Breakdown
+              <span class="see-all">Filter</span>
+            </div>
+            <div class="chart-container">
+              <div class="chart-placeholder"></div>
+            </div>
+            
+            <div class="section-title">Recent Transactions</div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Al Baik Delivery</div>
+                <div class="list-item-subtitle">Today, 2:45 PM</div>
+              </div>
+              <div class="list-item-amount" style="color: var(--secondary);">+SAR 18.50</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Pharmacy One Delivery</div>
+                <div class="list-item-subtitle">Today, 1:15 PM</div>
+              </div>
+              <div class="list-item-amount" style="color: var(--secondary);">+SAR 15.00</div>
+            </div>
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Bank Withdrawal</div>
+                <div class="list-item-subtitle">May 10, 2025</div>
+              </div>
+              <div class="list-item-amount" style="color: var(--text);">-SAR 500.00</div>
+            </div>
+            
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Home
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Orders
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Earnings
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 29. Admin Dashboard -->
+    <div class="screen" data-screen-type="admin">
+      <div class="screen-header">
+        Admin Dashboard
+        <span class="user-type">Admin</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                payLate Admin
+              </div>
+              <div style="font-size: 11px;">Admin: Sarah</div>
+            </div>
+            
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Active Users</div>
+                <div class="dashboard-card-value">12,456</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Today's Loans</div>
+                <div class="dashboard-card-value">$45,280</div>
+              </div>
+            </div>
+
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">Awaiting Approval</div>
+                <div class="dashboard-card-value">28</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-title">System Health</div>
+                <div class="dashboard-card-value">97%</div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <div class="chart-placeholder"></div>
+            </div>
+
+            <div class="section-title">
+              System Alerts
+              <span class="see-all">See All</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Unusual Transaction Activity</div>
+                <div class="list-item-subtitle">3 min ago • High Priority</div>
+              </div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">System Update Required</div>
+                <div class="list-item-subtitle">2 hrs ago • Medium Priority</div>
+              </div>
+            </div>
+
+            <div class="section-title">
+              Quick Actions
+            </div>
+            
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Moderation
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Support
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Reports
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Settings
+              </div>
+            </div>
+
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Dashboard
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Users
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Transactions
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Settings
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 30. User Management -->
+    <div class="screen" data-screen-type="admin">
+      <div class="screen-header">
+        User Management
+        <span class="user-type">Admin</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                User Management
+              </div>
+              <div style="font-size: 11px;">Admin: Sarah</div>
+            </div>
+            
+            <div class="search-bar">
+              <div style="margin-right: 10px;">🔍</div>
+              <div>Search users...</div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label">Filter by Status</div>
+              <div class="radio-group">
+                <div class="radio-option selected">All</div>
+                <div class="radio-option">Active</div>
+                <div class="radio-option">Pending</div>
+                <div class="radio-option">Blocked</div>
+              </div>
+            </div>
+            
+            <div class="list-item">
+              <div class="user-avatar"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Ahmed Mohammed</div>
+                <div class="list-item-subtitle">ID: #45892 • Verified User</div>
+              </div>
+              <div class="list-item-amount" style="color: var(--secondary);">Active</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="user-avatar"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Fatima Al-Sayed</div>
+                <div class="list-item-subtitle">ID: #45781 • Identity Verification Pending</div>
+              </div>
+              <div class="list-item-amount" style="color: var(--accent);">Pending</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="user-avatar"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Khalid Rahman</div>
+                <div class="list-item-subtitle">ID: #44587 • Multiple Payment Failures</div>
+              </div>
+              <div class="list-item-amount" style="color: #EF4444;">Blocked</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="user-avatar"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Sara Al-Ahmad</div>
+                <div class="list-item-subtitle">ID: #42984 • Business Account</div>
+              </div>
+              <div class="list-item-amount" style="color: var(--secondary);">Active</div>
+            </div>
+            
+            <div class="section-title">
+              User Actions
+            </div>
+            
+            <div class="action-buttons">
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Verify
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Credit Limit
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Block
+              </div>
+              <div class="action-button">
+                <div class="action-icon"></div>
+                Message
+              </div>
+            </div>
+
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Dashboard
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Users
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Transactions
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Settings
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 31. Transaction Monitoring -->
+    <div class="screen" data-screen-type="admin">
+      <div class="screen-header">
+        Transaction Monitoring
+        <span class="user-type">Admin</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Transaction Monitoring
+              </div>
+              <div style="font-size: 11px;">Admin: Sarah</div>
+            </div>
+            
+            <div class="search-bar">
+              <div style="margin-right: 10px;">🔍</div>
+              <div>Search transactions...</div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Filter by Status</div>
+              <div class="radio-group">
+                <div class="radio-option selected">All</div>
+                <div class="radio-option">Completed</div>
+                <div class="radio-option">Pending</div>
+                <div class="radio-option">Flagged</div>
+              </div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon" style="background-color: #FEF3C7;"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Transaction #T38294</div>
+                <div class="list-item-subtitle">Ahmed M. • 15 min ago</div>
+              </div>
+              <div class="list-item-amount" style="color: #EF4444;">⚠️ $1,275</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Transaction #T38293</div>
+                <div class="list-item-subtitle">Fatima A. • 45 min ago</div>
+              </div>
+              <div class="list-item-amount">$87.50</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Transaction #T38292</div>
+                <div class="list-item-subtitle">Mohammed K. • 1 hr ago</div>
+              </div>
+              <div class="list-item-amount">$326.75</div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon" style="background-color: #FEF3C7;"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Transaction #T38291</div>
+                <div class="list-item-subtitle">Sara A. • 2 hr ago</div>
+              </div>
+              <div class="list-item-amount" style="color: #EF4444;">⚠️ $2,156</div>
+            </div>
+            
+            <div class="section-title">
+              Fraud Detection Alerts
+              <span class="see-all">See All</span>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon" style="background-color: #FEE2E2;"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Multiple Large Transactions</div>
+                <div class="list-item-subtitle">User ID: #45892 • 3 transactions in 5 minutes</div>
+              </div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon" style="background-color: #FEE2E2;"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Unusual Location</div>
+                <div class="list-item-subtitle">User ID: #42984 • Login from new location</div>
+              </div>
+            </div>
+
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Dashboard
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Users
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Transactions
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Settings
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 32. Content Management -->
+    <div class="screen" data-screen-type="admin">
+      <div class="screen-header">
+        Content Management
+        <span class="user-type">Admin</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                Content Management
+              </div>
+              <div style="font-size: 11px;">Admin: Sarah</div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Content Type</div>
+              <div class="radio-group">
+                <div class="radio-option selected">Products</div>
+                <div class="radio-option">Social Posts</div>
+                <div class="radio-option">Businesses</div>
+                <div class="radio-option">Policies</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              Moderation Queue
+              <span class="see-all">12 Items</span>
+            </div>
+            
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div>
+                  <div style="font-weight: 500;">Al-Fareed Electronics</div>
+                  <div style="font-size: 11px; color: var(--medium-gray);">Business Verification Pending</div>
+                </div>
+              </div>
+              <div class="post-content">
+                <div class="product-image"></div>
+                <div style="margin-top: 10px;">
+                  <div style="font-weight: 500;">iPhone 14 Pro Max</div>
+                  <div style="color: var(--primary); font-weight: bold;">$1,099</div>
+                  <div style="font-size: 11px; color: var(--medium-gray);">Free shipping • 3 payments of $366.33</div>
+                </div>
+              </div>
+              <div class="post-actions">
+                <div class="primary-button" style="flex: 1; margin: 0;">Approve</div>
+                <div style="flex: 1; border: 1px solid #EF4444; color: #EF4444; text-align: center; padding: 12px; border-radius: 8px;">Reject</div>
+              </div>
+            </div>
+            
+            <div class="social-post">
+              <div class="post-header">
+                <div class="user-avatar"></div>
+                <div>
+                  <div style="font-weight: 500;">Fashion World</div>
+                  <div style="font-size: 11px; color: var(--medium-gray);">Business Verification Complete</div>
+                </div>
+              </div>
+              <div class="post-content">
+                "Get ready for summer with our new collection! Use code SUMMER20 for 20% off. Available with PayLate in 4 easy installments!"
+              </div>
+              <div class="post-actions">
+                <div class="primary-button" style="flex: 1; margin: 0;">Approve</div>
+                <div style="flex: 1; border: 1px solid #EF4444; color: #EF4444; text-align: center; padding: 12px; border-radius: 8px;">Reject</div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              Category Management
+            </div>
+            
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Electronics</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Fashion</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Home</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">Beauty</div>
+              </div>
+              <div class="category-item">
+                <div class="category-icon"></div>
+                <div class="category-name">+ Add New</div>
+              </div>
+            </div>
+
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Dashboard
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Users
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Content
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Settings
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 33. System Configuration -->
+    <div class="screen" data-screen-type="admin">
+      <div class="screen-header">
+        System Configuration
+        <span class="user-type">Admin</span>
+      </div>
+      <div class="screen-content">
+        <div class="phone-frame">
+          <div class="status-bar">
+            <div class="notch"></div>
+          </div>
+          <div class="screen-body">
+            <div class="app-header">
+              <div class="logo">
+                <div class="logo-icon"></div>
+                System Configuration
+              </div>
+              <div style="font-size: 11px;">Admin: Sarah</div>
+            </div>
+            
+            <div class="section-title">
+              System Parameters
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Default Interest Rate (%)</div>
+              <input type="text" class="input-field" value="3.5">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Maximum Credit Limit</div>
+              <input type="text" class="input-field" value="$5,000">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Default Payment Terms</div>
+              <div class="radio-group">
+                <div class="radio-option">3 Months</div>
+                <div class="radio-option selected">4 Months</div>
+                <div class="radio-option">6 Months</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Late Payment Fee</div>
+              <input type="text" class="input-field" value="$15 or 2% of balance">
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Service Radius (km)</div>
+              <input type="text" class="input-field" value="25">
+            </div>
+            
+            <div class="section-title">
+              Security Settings
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Login Security</div>
+              <div class="radio-group">
+                <div class="radio-option">Standard</div>
+                <div class="radio-option selected">Enhanced</div>
+                <div class="radio-option">Maximum</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="form-label">Suspicious Activity Parameters</div>
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Transaction Limit</div>
+                  <div class="list-item-subtitle">Flag transactions above $2,000</div>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="list-item-icon"></div>
+                <div class="list-item-details">
+                  <div class="list-item-title">Multiple Transactions</div>
+                  <div class="list-item-subtitle">Flag >3 transactions in 10 minutes</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="section-title">
+              API Integrations
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Payment Gateway</div>
+                <div class="list-item-subtitle">Connected • Last synced 5 min ago</div>
+              </div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">Credit Bureau</div>
+                <div class="list-item-subtitle">Connected • Last synced 15 min ago</div>
+              </div>
+            </div>
+            
+            <div class="list-item">
+              <div class="list-item-icon"></div>
+              <div class="list-item-details">
+                <div class="list-item-title">SMS Service</div>
+                <div class="list-item-subtitle">Connected • Last synced 30 min ago</div>
+              </div>
+            </div>
+            
+            <div class="primary-button">Save Configuration</div>
+
+            <div class="tab-navigation">
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Dashboard
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Users
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Content
+              </div>
+              <div class="tab-item">
+                <div class="tab-icon"></div>
+                Settings
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    function filterScreens(type) {
+      const screens = document.querySelectorAll('.screen');
+      const buttons = document.querySelectorAll('.filter-button');
+      
+      // Update active button
+      buttons.forEach(button => {
+        if (button.textContent.toLowerCase().includes(type)) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+      
+      // Filter screens
+      screens.forEach(screen => {
+        if (type === 'all' || screen.dataset.screenType === type) {
+          screen.style.display = 'block';
+        } else {
+          screen.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <!-- <script src="paylate-script.js"></script>  -->
+ 
+</body>
+</html>
